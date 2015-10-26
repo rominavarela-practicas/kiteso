@@ -14,7 +14,7 @@ function AuthServices(servicesUrl) {
  **/
 AuthServices.prototype.login = function (assertion, success_callback, error_callback)
 {
-    $.post( this.servicesUrl+"auth/login" , {assertion:assertion} ,
+    $.post( this.servicesUrl+"login" , {assertion:assertion} ,
                 success_callback , "json" )
                 .fail(error_callback);
 }
@@ -26,7 +26,7 @@ AuthServices.prototype.login = function (assertion, success_callback, error_call
  **/
 AuthServices.prototype.logout = function (success_callback, error_callback)
 {
-    $.post( this.servicesUrl+"auth/logout" , {} ,
+    $.post( this.servicesUrl+"logout" , {} ,
                 success_callback , "json" )
                 .fail(error_callback);
 }
