@@ -8,9 +8,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mx.kiteso.KIteso.constant.Status;
 import mx.kiteso.KIteso.controller.SessionController;
-import mx.kiteso.KIteso.model.Auth;
+import mx.kiteso.KIteso.model.Status;
 import mx.kiteso.KIteso.model.Session;
 
 import org.apache.http.HttpResponse;
@@ -46,11 +45,11 @@ public class AuthServices {
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public Auth authService( @RequestParam String assertion,
+	public Status authService( @RequestParam String assertion,
 						HttpServletRequest req, HttpServletResponse res)
 	{
-		Auth auth = new Auth();
-		auth.setStatus(-1);
+		Status status = new Status();
+		status.setStatus(-1);
 		
 		try
 		{
@@ -64,9 +63,9 @@ public class AuthServices {
 			post.setEntity(new UrlEncodedFormEntity(params));
 			
 			HttpResponse response = client.execute((HttpUriRequest)post);
-			auth.setStatus(response.getStatusLine().getStatusCode());
+			status.setStatus(response.getStatusLine().getStatusCode());
 			
-			if(auth.getStatus()!=Status.STATUS_OK)
+			if(status.getStatus()!=Status.STATUS_OK)
 				throw new java.lang.Exception("Verifier status is not OK");
 			
 			//ON SUCCESS
@@ -79,26 +78,26 @@ public class AuthServices {
 			Session session = new Session();
 			session.setEmail(personaAuth.email);
 			SessionController.writeSession(session, res);
-			auth.setEmail(personaAuth.email);
+			status.setEmail(personaAuth.email);
 		}
 		catch(Exception ex)
 		{
 			SessionController.clearSession(res);
-			auth.setMsg(ex.getMessage());
+			status.setMsg(ex.getMessage());
 			log.info(ex.getMessage());
 		}
 		
-		return auth;
+		return status;
 	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public Auth logoutService(HttpServletRequest req, HttpServletResponse res)
+	public Status logoutService(HttpServletRequest req, HttpServletResponse res)
 	{
-		Auth auth = new Auth();
+		Status status = new Status();
 		SessionController.clearSession(res);
-		auth.setStatus(Status.STATUS_OK);
-		return auth;
+		status.setStatus(Status.STATUS_OK);
+		return status;
 	}
 	
 	@SuppressWarnings("unused")

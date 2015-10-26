@@ -10,4 +10,5 @@ tools:
 	export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
 deploy:
 	export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
-	mvn spring-boot:run
+	sudo service apache2 stop
+	sudo mvn spring-boot:run

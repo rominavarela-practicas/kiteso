@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mx.kiteso.KIteso.controller.SessionController;
+import mx.kiteso.KIteso.model.Status;
 import mx.kiteso.KIteso.model.Session;
 
 import org.apache.log4j.Logger;
@@ -31,11 +32,15 @@ public class BaseServices {
 	
 	@RequestMapping(value="/hello", method=RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public String hello( 
+	public Status hello( 
 			@CookieValue(value = "session", defaultValue = "{}") String sessionCookie,
 			HttpServletRequest req, HttpServletResponse res)
 	{
+	    Status status = new Status();
 		Session session = SessionController.readSession(sessionCookie);
-		return "{ \"msg\": \"hello : "+session.getEmail()+" \" }";
+		
+		status.setStatus(Status.STATUS_OK);
+		status.setMsg("hello "+session.getEmail());
+		return status;
 	}
 }

@@ -11,6 +11,7 @@ $.ajaxSetup({
 //session control
 var baseServices = new BaseServices(servicesUrl);
 var authServices = new AuthServices(servicesUrl);
+var session = {};
 
 $("#loginButton").click(function(){
   navigator.id.request();
@@ -20,31 +21,55 @@ $("#logoutButton").click(function(){
   navigator.id.logout();
 });
 
+var displaySession = function() {
+    if(session.email)
+    {
+        $("#loginButton").hide();
+        $("#logoutButton").show();
+    }
+    else
+    {
+        $("#loginButton").show();
+        $("#logoutButton").hide();
+    }
+}
+
+displaySession();
+
 navigator.id.watch({
     onlogin: function(assertion)
     {
     	authServices.login(assertion, function(data){
-
             console.log("auth success");
             console.log(data);
-
-
+            session = data;
+            displaySession();
+            
         }, function(e){
             console.log("Error in auth service");
             console.log(e);
+            
+            session = {}
+            displaySession();
         });
     },
 
     onlogout: function()
     {
     	authServices.logout( function(data){
-          console.log("logout success");
-          console.log(data);
+            console.log("logout success");
+            console.log(data);
+            displaySession();
+            
             if(data.redir)
                 window.location.assign(data.redir);
+                
         }, function(e){
             console.log("Error in logout service");
             console.log(e);
+            
+            session = {}
+            displaySession();
         });
     }
 });
