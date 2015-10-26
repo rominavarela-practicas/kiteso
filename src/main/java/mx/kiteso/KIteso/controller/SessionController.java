@@ -2,7 +2,7 @@ package mx.kiteso.KIteso.controller;
 
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -23,6 +23,8 @@ public class SessionController{
 	private static final byte[] keyValue =
 		      new byte[] {'O', 'p', 'e', 'n', 'S', 'a', 'y', 's', 'M', 'e', '1', '2', '3', '4', '5', '6'};
 	
+	private static final Base64 base64 = new Base64();
+	
 	public static void clearSession(HttpServletResponse res) {
 		res.addCookie( new Cookie("session", "") );
 	}
@@ -38,8 +40,7 @@ public class SessionController{
 			Cipher c = Cipher.getInstance("AES");
 		    c.init(Cipher.ENCRYPT_MODE, key);
 		    byte[] ciphertext = c.doFinal(json.getBytes());
-		    Base64.Encoder encoder = Base64.getEncoder();
-		    cipheredSession = encoder.encodeToString(ciphertext);
+		    cipheredSession = new String(base64.encode(ciphertext));
 		} 
 		catch (Exception ex)
 		{
@@ -59,8 +60,8 @@ public class SessionController{
 				Key key = new SecretKeySpec(SessionController.keyValue, "AES");
 			    Cipher c = Cipher.getInstance("AES");
 			    c.init(Cipher.DECRYPT_MODE, key);
-			    Base64.Decoder decoder = Base64.getDecoder();
-			    byte[] decodedValue = decoder.decode(sessionCookie);
+			    
+			    byte[] decodedValue = base64.decode(sessionCookie);
 			    byte[] decValue = c.doFinal(decodedValue);
 			    String decryptedValue = new String(decValue);
 			    
