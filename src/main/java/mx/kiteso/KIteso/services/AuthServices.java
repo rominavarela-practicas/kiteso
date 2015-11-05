@@ -79,6 +79,9 @@ public class AuthServices {
 			session.setEmail(personaAuth.email);
 			SessionController.writeSession(session, res);
 			status.setEmail(personaAuth.email);
+			
+			//TODO user exists?
+			status.setRedir("/register");
 		}
 		catch(Exception ex)
 		{
@@ -97,6 +100,7 @@ public class AuthServices {
 		Status status = new Status();
 		SessionController.clearSession(res);
 		status.setStatus(Status.STATUS_OK);
+		status.setRedir("/");
 		return status;
 	}
 	

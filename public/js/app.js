@@ -42,13 +42,19 @@ navigator.id.watch({
     	authServices.login(assertion, function(data){
             console.log("auth success");
             console.log(data);
-            session = data;
-            displaySession();
             
+            //on change
+            if(session.email != data.email)
+        	{
+            	session = data;
+                displaySession();
+                if(data.redir && data.redir!==window.location.pathname)
+                	window.location.assign(data.redir);
+        	}
+                        
         }, function(e){
             console.log("Error in auth service");
             console.log(e);
-            
             session = {}
             displaySession();
         });
@@ -59,10 +65,15 @@ navigator.id.watch({
     	authServices.logout( function(data){
             console.log("logout success");
             console.log(data);
-            displaySession();
             
-            if(data.redir)
-                window.location.assign(data.redir);
+            //on change
+            if(session.email != data.email)
+        	{
+                session = {}
+            	displaySession();
+                if(data.redir && data.redir!==window.location.pathname)
+                	window.location.assign(data.redir);
+        	}
                 
         }, function(e){
             console.log("Error in logout service");
