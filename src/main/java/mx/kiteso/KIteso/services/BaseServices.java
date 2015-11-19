@@ -37,10 +37,18 @@ public class BaseServices {
 			HttpServletRequest req, HttpServletResponse res)
 	{
 	    Status status = new Status();
-		Session session = SessionController.readSession(sessionCookie);
+	    status.setStatus(Status.STATUS_OK);
+	    
+	    try
+	    {
+	    	Session session = SessionController.readSession(sessionCookie);
+	    	status.setMsg("hello "+session.getEmail());
+	    }
+	    catch(Exception ex)
+	    {
+	    	status.setMsg("hello visitor");
+	    }
 		
-		status.setStatus(Status.STATUS_OK);
-		status.setMsg("hello "+session.getEmail());
 		return status;
 	}
 }

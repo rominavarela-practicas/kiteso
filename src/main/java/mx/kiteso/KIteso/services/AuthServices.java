@@ -81,7 +81,7 @@ public class AuthServices {
 			status.setEmail(personaAuth.email);
 			
 			//TODO user exists?
-			status.setRedir("/register");
+			status.setRedir("/register.html");
 		}
 		catch(Exception ex)
 		{
