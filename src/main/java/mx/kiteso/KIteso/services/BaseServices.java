@@ -1,12 +1,17 @@
 package mx.kiteso.KIteso.services;
 
+import java.io.FileNotFoundException;
+
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mx.kiteso.KIteso.controller.SessionController;
+import mx.kiteso.KIteso.graph.Graph;
 import mx.kiteso.KIteso.model.Status;
+import mx.kiteso.KIteso.model.Link;
+import mx.kiteso.KIteso.model.Node;
 import mx.kiteso.KIteso.model.Session;
 
 import org.apache.log4j.Logger;
@@ -26,8 +31,14 @@ public class BaseServices {
 	private static final Logger log = Logger.getLogger(BaseServices.class);
 	
 	@PostConstruct
-	public void init() {
+	public void init() throws FileNotFoundException {
 		log.info("init Demo Controller");
+		Graph g= Graph.getInstance();
+		for(Node n: g.getNodes())
+			System.out.println(n.getCoords()[0]+", "+n.getCoords()[1]);
+		
+		for(Link l: g.getLinks())
+			System.out.println(l.getLink()[0]+" > "+ l.getLink()[1]);
 	}
 	
 	@RequestMapping(value="/hello", method=RequestMethod.POST, produces = "application/json")

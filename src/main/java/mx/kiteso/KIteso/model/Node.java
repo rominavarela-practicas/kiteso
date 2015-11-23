@@ -2,27 +2,20 @@ package mx.kiteso.KIteso.model;
 
 public class Node {
 	int id;
-	double latitude;
-	double longitude;
+	double[] coords;
 	
 	//getters and setters
 	public int getId(){
 		return this.id;
 	}
-	public double getLatitude(){
-		return this.latitude;
-	}
-	public double getLongitude(){
-		return this.longitude;
+	public double[] getCoords(){
+		return this.coords;
 	}
 	
 	public void setId(int id){
 		this.id= id;
 	}
-	public void setLatitude(double latitude){
-		this.latitude= latitude;
-	}
-	public void setLongitude(double longitude){
-		this.longitude= longitude;
+	public void setCoords(double[] coords){
+		this.coords= coords;
 	}
 }
