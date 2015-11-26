@@ -1,0 +1,124 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KITESO</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src = "http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  </head>
+  <script>
+  $(document).on('ready',function(){
+
+
+  $("#Kitt").on("click", function(e){
+  e.preventDefault();
+  var link = $(this).attr("href");
+  location.href = link;
+  });
+
+  $("#Schh").on("click", function(e){
+  e.preventDefault();
+  var link2 = $(this).attr("href");
+  location.href = link2;
+  });
+
+  $("#google").on("click", function(e){
+  e.preventDefault();
+  var link3 = $(this).attr("href");
+  location.href = link3;
+  });
+
+  $("#Teachh").on("click", function(e){
+  e.preventDefault();
+  var link4 = $(this).attr("href");
+  location.href = link4;
+  });
+
+$("#name1").load("teacherslist.html #nam1");
+$("#name2").load("teacherslist.html #nam2");
+$("#name3").load("teacherslist.html #nam3");
+
+$("#email1").load("teacherslist.html #em1");
+$("#email2").load("teacherslist.html #em2");
+$("#email3").load("teacherslist.html #em3");
+
+$("#cub1").load("teacherslist.html #cubi1");
+$("#cub2").load("teacherslist.html #cubi2");
+$("#cub3").load("teacherslist.html #cubi3");
+
+  });
+  </script>
+
+  <body>
+    
+  	<div class="contenedor-fluid">
+      <div class="row">
+    		<div class="navbar navbar-default navbar-static-top" role="navigation">
+  	      <div class="container">
+  	        <div class="navbar-header">
+  	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+  	            <span class="sr-only">Toggle navigation</span>
+  	            <span class="icon-bar"></span>
+  	            <span class="icon-bar"></span>
+  	            <span class="icon-bar"></span>
+  	          </button>
+  	          <a class="navbar-brand" href="http://localhost:63342/ProyectoDS/index.html" id="Kitt"><p><font color="blue">KITESO</font></p></a>
+  	        </div>
+  	        <div class="navbar-collapse collapse">
+  	          <ul class="nav navbar-nav navbar-right">      
+  	            <li><a href="http://localhost:63342/ProyectoDS/schedule.html" id ="Schh">Schedule</a></li>
+                <li><a href="http://localhost:63342/ProyectoDS/googleMaps.html" id="google">Map</a></li>
+                <li><a href="http://localhost:63342/ProyectoDS/teacher.html" id="Teachh">Teacher</a></li>
+                <li><a href="http://localhost:63342/ProyectoDS/index.html" id="Back">Back</a></li>
+
+  	          </ul>
+  	        </div><!--/.nav-collapse -->
+  	      </div>
+      	</div>
+      </div>
+
+    	<div class="row">
+    		<div class="col-md-1">
+    		</div>
+    		<div class="col-md-10">
+          <body>
+              <div class="container">
+                <h2 class="title">Teacher</h2>
+                <p>Schedule of your teacher</p>            
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>E-Mail</th>
+                      <th>Cubicle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td id="name1"></td>
+                      <td id="email1"></td>
+                      <td id="cub1"></td>
+                    </tr>
+                    <tr>
+                      <td id="name2"></td>
+                      <td id="email2"></td>
+                      <td id="cub2"></td>
+                    </tr>
+                    <tr>
+                      <td id="name3"></td>
+                      <td id="email3"></td>
+                      <td id="cub3"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </body>
+    		</div>
+    		<div class="col-md-1">
+    		</div>
+    	</div>
+  	</div>
+  </body>

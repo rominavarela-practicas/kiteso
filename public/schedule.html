@@ -1,0 +1,246 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KITESO</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src = "http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  </head>
+  <script>
+  $(document).on('ready',function(){
+
+
+  $("#Kit").on("click", function(e){
+  e.preventDefault();
+  var link = $(this).attr("href");
+  location.href = link;
+  });
+
+  $("#Sch").on("click", function(e){
+  e.preventDefault();
+  var link = $(this).attr("href");
+  location.href = link;
+  });
+
+  $("#Mapss").on("click", function(e){
+  e.preventDefault();
+  var link = $(this).attr("href");
+  location.href = link;
+  });
+
+  $("#Teach").on("click", function(e){
+  e.preventDefault();
+  var link = $(this).attr("href");
+  location.href = link;
+  });
+
+
+$("#hr1").load("scheduleTest.html #hrs1");
+$("#hr2").load("scheduleTest.html #hrs2");
+$("#hr3").load("scheduleTest.html #hrs3");
+$("#hr4").load("scheduleTest.html #hrs4");
+$("#hr5").load("scheduleTest.html #hrs5");
+$("#hr6").load("scheduleTest.html #hrs6");
+$("#hr7").load("scheduleTest.html #hrs7");
+$("#hr8").load("scheduleTest.html #hrs8");
+
+
+$("#mon1").load("scheduleTest.html #mond1");
+$("#mon2").load("scheduleTest.html #mond2");
+$("#mon3").load("scheduleTest.html #mond3");
+$("#mon4").load("scheduleTest.html #mond4");
+$("#mon5").load("scheduleTest.html #mond5");
+$("#mon6").load("scheduleTest.html #mond6");
+$("#mon7").load("scheduleTest.html #mond7");
+$("#mon8").load("scheduleTest.html #mond8");
+
+
+$("#tue1").load("scheduleTest.html #tues1");
+$("#tue2").load("scheduleTest.html #tues2");
+$("#tue3").load("scheduleTest.html #tues3");
+$("#tue4").load("scheduleTest.html #tues4");
+$("#tue8").load("scheduleTest.html #tues5");
+$("#tue8").load("scheduleTest.html #tues6");
+$("#tue8").load("scheduleTest.html #tues7");
+$("#tue8").load("scheduleTest.html #tues8");
+
+$("#wend1").load("scheduleTest.html #wends1");
+$("#wend2").load("scheduleTest.html #wends2");
+$("#wend3").load("scheduleTest.html #wends3");
+$("#wend4").load("scheduleTest.html #wends4");
+$("#wend5").load("scheduleTest.html #wends5");
+$("#wend6").load("scheduleTest.html #wends6");
+$("#wend7").load("scheduleTest.html #wends7");
+$("#wend8").load("scheduleTest.html #wends8");
+
+
+$("#thr1").load("scheduleTest.html #thrs1");
+$("#thr2").load("scheduleTest.html #thrs2");
+$("#thr3").load("scheduleTest.html #thrs3");
+$("#thr4").load("scheduleTest.html #thrs4");
+$("#thr5").load("scheduleTest.html #thrs5");
+$("#thr6").load("scheduleTest.html #thrs6");
+$("#thr7").load("scheduleTest.html #thrs7");
+$("#thr8").load("scheduleTest.html #thrs8");
+
+$("#fri1").load("scheduleTest.html #frid1");
+$("#fri2").load("scheduleTest.html #frid2");
+$("#fri3").load("scheduleTest.html #frid3");
+$("#fri4").load("scheduleTest.html #frid4");
+$("#fri5").load("scheduleTest.html #frid5");
+$("#fri6").load("scheduleTest.html #frid6");
+$("#fri7").load("scheduleTest.html #frid7");
+$("#fri8").load("scheduleTest.html #frid8");
+
+$("#sat1").load("scheduleTest.html #satu1");
+$("#sat2").load("scheduleTest.html #satu2");
+$("#sat3").load("scheduleTest.html #satu3");
+$("#sat4").load("scheduleTest.html #satu4");
+$("#sat5").load("scheduleTest.html #satu5");
+$("#sat6").load("scheduleTest.html #satu6");
+$("#sat7").load("scheduleTest.html #satu7");
+$("#sat8").load("scheduleTest.html #satu8");
+
+
+
+
+
+});
+
+
+  });
+  </script>
+  <body>
+    
+  	<div class="contenedor-fluid">
+      <div class="row">
+    		<div class="navbar navbar-default navbar-static-top" role="navigation">
+  	      <div class="container">
+  	        <div class="navbar-header">
+  	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+  	            <span class="sr-only">Toggle navigation</span>
+  	            <span class="icon-bar"></span>
+  	            <span class="icon-bar"></span>
+  	            <span class="icon-bar"></span>
+  	          </button>
+  	          <a class="navbar-brand" href="http://localhost:63342/ProyectoDS/index.html" id="Kit"><p><font color="blue">KITESO</font></p></a>
+  	        </div>
+  	        <div class="navbar-collapse collapse">
+  	          <ul class="nav navbar-nav navbar-right">      
+  	            <li><a href="http://localhost:63342/ProyectoDS/schedule.html" id="Sch">Schedule</a></li>
+                <li><a href="http://localhost:63342/ProyectoDS/googleMaps.html" id="Mapss">Map</a></li>
+                <li><a href="http://localhost:63342/ProyectoDS/teacher.html" id="Teach">Teacher</a></li>
+                <li><a href="http://localhost:63342/ProyectoDS/index.html" id="Back">Back</a></li>
+
+  	          </ul>
+  	        </div><!--/.nav-collapse -->
+  	      </div>
+      	</div>
+      </div>
+
+    	<div class="row">
+    		<div class="col-md-1">
+    		</div>
+    		<div class="col-md-10">
+
+              <div class="container">
+                <h2 class="title">Schedule</h2>
+                <p>This is your schedule</p>            
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Hour</th>
+                      <th>Monday</th>
+                      <th>Tuesday</th>
+                      <th>Wednesday </th>
+                      <th>Thursday </th>
+                      <th>Friday</th>
+                      <th>Saturday</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td id="hr1"></td>
+                      <td id="mon1"> </td>
+                      <td id="tue1"> </td>
+                      <td id="wend1" ></td>
+                      <td id="thr1"></td>
+                      <td id="fri1"></td>
+                      <td id="sat1"></td>
+                    </tr>
+                    <tr>
+                      <td id="hr2"></td>
+                      <td id="mon2"></td>
+                      <td id="tue2"></td>
+                      <td id="wend2"></td>
+                      <td id="thr2"></td>
+                      <td id="fri2"></td>
+                      <td id="sat2"></td>
+                    </tr>
+                    <tr>
+                      <td id="hr3"></td>
+                      <td id="mon3"></td>
+                      <td id="tue3"></td>
+                      <td id="wend3"></td>
+                      <td id="thr3"></td>
+                      <td id="fri3"></td>
+                      <td id="sat3"></td>
+                    </tr>
+                    <tr>
+                      <td id="hr4"></td>
+                      <td id="mon4"></td>
+                      <td id="tue4"></td>
+                      <td id="wend4"></td>
+                      <td id="thr4"></td>
+                      <td id="fri4"></td>
+                      <td id="sat4"></td>
+                    </tr>
+                    <tr>
+                      <td id="hr5"></td>
+                      <td id="mon5"></td>
+                      <td id="tue5"></td>
+                      <td id="wend5"></td>
+                      <td id="thr5"></td>
+                      <td id="fri5"></td>
+                      <td id="sat5"></td>
+                    </tr>
+                    <tr>
+                      <td id="hr6"></td>
+                      <td id="mon6"></td>
+                      <td id="tue6"></td>
+                      <td id="wend6"></td>
+                      <td id="thr6"></td>
+                      <td id="fri6"></td>
+                      <td id="sat6"></td>
+                    </tr>
+                    <tr>
+                      <td id="hr7"></td>
+                      <td id="mon7"></td>
+                      <td id="tue7"></td>
+                      <td id="wend7"></td>
+                      <td id="thr7"></td>
+                      <td id="fri7"></td>
+                      <td id="sat7"></td>
+                    </tr>
+                    <tr>
+                      <td id="hr8"></td>
+                      <td id="mon8"></td>
+                      <td id="tue8"></td>
+                      <td id="wend8"></td>
+                      <td id="thr8"></td>
+                      <td id="fri8"></td>
+                      <td id="sat8"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+    		</div>
+    		<div class="col-md-1">
+    		</div>
+    	</div>
+  	</div>
+  </body>
+</html>
