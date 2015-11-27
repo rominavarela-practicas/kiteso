@@ -2,6 +2,7 @@ package mx.kiteso.KIteso.graph;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -51,7 +52,11 @@ public class GraphTest {
 		Graph graph= Graph.getInstance();
 		Node source = graph.nodes.get(0);
 		Node target = graph.nodes.get(10);
-		ArrayList<Link> path= graph.getShortestPath(source, target);
+
+
+
+
+		LinkedList<Node> path= graph.getShortestPath(source, target);
 		
 		//
 		ArrayList<TestGetShortestPathRunnable> runnables= new ArrayList<TestGetShortestPathRunnable>();
@@ -69,7 +74,7 @@ public class GraphTest {
 		
 		for(Thread t: threads)
 			t.join();
-		
+
 		//assert same path
 		for(TestGetShortestPathRunnable r: runnables)
 		{
@@ -82,7 +87,7 @@ public class GraphTest {
 		public Graph graph;
 		public Node source;
 		public Node target;
-		public ArrayList<Link> path;
+		public LinkedList<Node> path;
 		
 		public void run() {
 	        try
