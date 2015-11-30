@@ -2,13 +2,13 @@ package mx.kiteso.KIteso.graph;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import mx.kiteso.KIteso.model.Link;
 import mx.kiteso.KIteso.model.Node;
+import mx.kiteso.KIteso.model.adapter.Vertex;
 
 public class GraphTest {
 	
@@ -50,13 +50,10 @@ public class GraphTest {
 	@Test
 	public void TestGetShortestPath() throws Exception {
 		Graph graph= Graph.getInstance();
-		Node source = graph.nodes.get(0);
-		Node target = graph.nodes.get(10);
-
-
-
-
-		LinkedList<Node> path= graph.getShortestPath(source, target);
+		Vertex source = graph.vertices.get(0);
+		Vertex target = graph.vertices.get(10);
+		
+		List<Node> path= graph.getShortestPath(source, target);
 		
 		//
 		ArrayList<TestGetShortestPathRunnable> runnables= new ArrayList<TestGetShortestPathRunnable>();
@@ -85,16 +82,16 @@ public class GraphTest {
 	}
 	class TestGetShortestPathRunnable implements Runnable{
 		public Graph graph;
-		public Node source;
-		public Node target;
-		public LinkedList<Node> path;
+		public Vertex source;
+		public Vertex target;
+		public List<Node> path;
 		
 		public void run() {
 	        try
 	        {
 				this.graph= Graph.getInstance();
-				this.source= this.graph.nodes.get(0);
-				this.target= this.graph.nodes.get(10);
+				this.source= this.graph.vertices.get(0);
+				this.target= this.graph.vertices.get(10);
 				this.path= this.graph.getShortestPath(source, target);
 			} 
 	        catch (FileNotFoundException e) {

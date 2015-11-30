@@ -1,10 +1,9 @@
-package mx.kiteso.KIteso.adapter;
+package mx.kiteso.KIteso.algorithm.adapter;
 
-import mx.kiteso.KIteso.algorithm.Dijkstra;
 import mx.kiteso.KIteso.model.Link;
 import mx.kiteso.KIteso.model.Node;
+import mx.kiteso.KIteso.model.adapter.Edge;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
  */
 public class DijkstraAdapter {
     private Dijkstra dijkstra;
-    private ArrayList<Node> nodes;
+    private List<Node> nodes;
 
     public DijkstraAdapter() {
         dijkstra = new Dijkstra();
@@ -22,7 +21,7 @@ public class DijkstraAdapter {
 
     //Metodo que convierte una lista de Links en una lista de Edges para facilitar el uso en el algoritmo de Dijkstra
     public void sendLinks(List<Link> links) {
-        ArrayList<Edge> edges = new ArrayList<>();
+        ArrayList<Edge> edges = new ArrayList<Edge>();
         Node tempNodeOr;
         Node tempNodeDe;
         double tempWeight;
@@ -38,7 +37,7 @@ public class DijkstraAdapter {
         dijkstra.setEdges(edges);
     }
 
-    public void setNodes(ArrayList<Node> nodes) {
+    public void setNodes(List<Node> nodes) {
         this.nodes = nodes;
     }
 

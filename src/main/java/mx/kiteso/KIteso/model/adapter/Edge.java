@@ -1,4 +1,4 @@
-package mx.kiteso.KIteso.adapter;
+package mx.kiteso.KIteso.model.adapter;
 
 import mx.kiteso.KIteso.model.Node;
 
@@ -10,7 +10,7 @@ public class Edge {
     private Node origen;
     private Node destino;
     private double ponderacion;
-
+    
     public Edge(Node origen, Node destino, double ponderacion) {
         this.origen = origen;
         this.destino = destino;
