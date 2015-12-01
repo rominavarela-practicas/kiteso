@@ -51,6 +51,7 @@ public class MapServices {
 				paths.add(new PathAdapter(e));
 			
 			map.setPaths(paths);
+			map.setLocations(graph.getLocations());
 			map.setStatus(Status.STATUS_OK);
 			
 		} catch(Exception ex) {

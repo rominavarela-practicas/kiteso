@@ -12,11 +12,13 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import mx.kiteso.KIteso.model.serial.in.Link;
+import mx.kiteso.KIteso.model.serial.in.Location;
 import mx.kiteso.KIteso.model.serial.in.Node;
 
 public class Graph {
 	List<Vertex> vertices;
 	List<Edge> edges;
+	List<Location> locations;
 	
 	Graph() throws FileNotFoundException {
 		File jsonNodes = new File("public/data/nodes.json");
@@ -24,6 +26,9 @@ public class Graph {
 		
 		File jsonLinks = new File("public/data/links.json");
 		this.edges= this.readLinks(jsonLinks);
+		
+		File jsonLocation = new File("public/data/locations.json");
+		this.locations= this.readLocations(jsonLocation);
 	}
 	
 	public List<Vertex> readNodes(File jsonNodes) throws FileNotFoundException {
@@ -67,6 +72,17 @@ public class Graph {
 		return edges;
 	}
 	
+	public List<Location> readLocations(File jsonLocations) throws FileNotFoundException {
+		FileReader fileReader = new FileReader(jsonLocations);
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+		Gson gson = new Gson();
+		Type tipoLista = new TypeToken<List<Location>>(){}.getType();
+		List<Location> locations = gson.fromJson(bufferedReader, tipoLista);
+		
+		return locations;
+	}
+	
 	public double calculateWeight(Node source, Node target) {		
 		double a = Math.sqrt(
 				(source.getCoords()[0]*source.getCoords()[0])+
@@ -85,12 +101,18 @@ public class Graph {
 	public List<Edge> getEdges() {
 		return this.edges;
 	}
+	public List<Location> getLocations() {
+		return this.locations;
+	}
 	
 	public void setVertices(List<Vertex> l) {
 		this.vertices= l;
 	}
 	public void setEdges(List<Edge> l) {
 		this.edges= l;
+	}
+	public void setLocations(List<Location> l) {
+		this.locations= l;
 	}
 	
 	//Singleton
