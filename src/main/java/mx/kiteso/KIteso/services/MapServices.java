@@ -1,6 +1,7 @@
 package mx.kiteso.KIteso.services;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -17,10 +18,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
+import mx.kiteso.KIteso.algorithm.Dijkstra;
+import mx.kiteso.KIteso.algorithm.impl.DijkstraImpl;
+import mx.kiteso.KIteso.graph.Edge;
 import mx.kiteso.KIteso.graph.Graph;
-import mx.kiteso.KIteso.model.Node;
-import mx.kiteso.KIteso.model.Status;
-import mx.kiteso.KIteso.model.adapter.Vertex;
+import mx.kiteso.KIteso.model.adapter.PathAdapter;
+import mx.kiteso.KIteso.model.serial.in.Node;
+import mx.kiteso.KIteso.model.serial.out.Map;
+import mx.kiteso.KIteso.model.serial.out.Path;
+import mx.kiteso.KIteso.model.serial.out.Status;
 
 @Controller
 @RequestMapping("KItesoServices/map")
@@ -33,19 +39,41 @@ public class MapServices {
 		log.info("init Demo Controller");
 	}
 	
-	@RequestMapping(value="/shortest/path/{sourceId}/{targetId}", method=RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value="", method=RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public Status shortestPath(@PathVariable int sourceId,@PathVariable int targetId,
+	public Map getMap(
+			@CookieValue(value = "session", defaultValue = "{}") String sessionCookie,
+			HttpServletRequest req, HttpServletResponse res)
+	{
+		Map map = new Map();
+		
+		try {
+			Graph graph= Graph.getInstance();
+			ArrayList<Path> paths= new ArrayList<Path>();
+			for(Edge e: graph.getEdges())
+				paths.add(new PathAdapter(e));
+			
+			map.setPaths(paths);
+			map.setStatus(Status.STATUS_OK);
+			
+		} catch(Exception ex) {
+			map.setMsg(ex.getMessage());
+		}
+		
+		return map;
+	}
+	
+	@RequestMapping(value="/shortest/route/{sourceId}/{targetId}", method=RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Status shortestRoute(@PathVariable int sourceId,@PathVariable int targetId,
 			@CookieValue(value = "session", defaultValue = "{}") String sessionCookie,
 			HttpServletRequest req, HttpServletResponse res)
 	{
 		Status status = new Status();
 		
 		try {
-			Graph graph= Graph.getInstance();
-			Vertex source= graph.getVertices().get(sourceId-1);
-			Vertex target= graph.getVertices().get(targetId-1);
-			List<Node> path= graph.getShortestPath(source, target);
+			Dijkstra d= DijkstraImpl.getInstance(sourceId-1);
+			List<Node> path= d.getShortestRoute(targetId-1);
 			
 			Gson gson = new Gson();
 			String json = gson.toJson(path);

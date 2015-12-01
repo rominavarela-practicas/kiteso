@@ -1,4 +1,4 @@
-package mx.kiteso.KIteso.model;
+package mx.kiteso.KIteso.model.serial.out;
 
 public class Status {
     public static final int STATUS_OK = 200;

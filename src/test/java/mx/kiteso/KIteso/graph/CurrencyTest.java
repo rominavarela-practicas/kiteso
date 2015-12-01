@@ -7,10 +7,12 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import mx.kiteso.KIteso.model.Node;
-import mx.kiteso.KIteso.model.adapter.Vertex;
+import mx.kiteso.KIteso.algorithm.Dijkstra;
+import mx.kiteso.KIteso.algorithm.impl.DijkstraImpl;
+import mx.kiteso.KIteso.graph.Graph;
+import mx.kiteso.KIteso.model.serial.in.Node;
 
-public class GraphTest {
+public class CurrencyTest {
 	
 	@Test
 	public void TestGetInstance() throws InterruptedException {
@@ -48,20 +50,17 @@ public class GraphTest {
 	}
 	
 	@Test
-	public void TestGetShortestPath() throws Exception {
-		Graph graph= Graph.getInstance();
-		Vertex source = graph.vertices.get(0);
-		Vertex target = graph.vertices.get(10);
-		
-		List<Node> path= graph.getShortestPath(source, target);
-		
+	public void shortestRoute() throws Exception {
+		Dijkstra d= DijkstraImpl.getInstance(0);
+		List<Node> path= d.getShortestRoute(10);
+				
 		//
-		ArrayList<TestGetShortestPathRunnable> runnables= new ArrayList<TestGetShortestPathRunnable>();
+		ArrayList<ShortestRouteRunnable> runnables= new ArrayList<ShortestRouteRunnable>();
 		ArrayList<Thread> threads= new ArrayList<Thread>();
 		
 		for(int i=0; i<5; i++) 
 		{
-			TestGetShortestPathRunnable runnable = new TestGetShortestPathRunnable();
+			ShortestRouteRunnable runnable = new ShortestRouteRunnable();
 			runnables.add(runnable);
 			threads.add( new Thread(runnable));
 		}
@@ -73,28 +72,23 @@ public class GraphTest {
 			t.join();
 
 		//assert same path
-		for(TestGetShortestPathRunnable r: runnables)
+		for(ShortestRouteRunnable r: runnables)
 		{
 			Assert.assertEquals(path.size(), r.path.size());
 			for(int i=0; i<path.size(); i++)
 				Assert.assertEquals(path.get(i), r.path.get(i));
 		}
 	}
-	class TestGetShortestPathRunnable implements Runnable{
-		public Graph graph;
-		public Vertex source;
-		public Vertex target;
+	class ShortestRouteRunnable implements Runnable{
 		public List<Node> path;
 		
 		public void run() {
 	        try
 	        {
-				this.graph= Graph.getInstance();
-				this.source= this.graph.vertices.get(0);
-				this.target= this.graph.vertices.get(10);
-				this.path= this.graph.getShortestPath(source, target);
+	        	Dijkstra d= DijkstraImpl.getInstance(0);
+	    		this.path= d.getShortestRoute(10);
 			} 
-	        catch (FileNotFoundException e) {
+	        catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

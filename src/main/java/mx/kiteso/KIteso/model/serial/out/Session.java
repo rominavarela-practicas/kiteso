@@ -1,4 +1,4 @@
-package mx.kiteso.KIteso.model;
+package mx.kiteso.KIteso.model.serial.out;
 
 public class Session {
 	private String email;

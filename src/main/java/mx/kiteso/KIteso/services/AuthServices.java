@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mx.kiteso.KIteso.controller.SessionController;
-import mx.kiteso.KIteso.model.Status;
-import mx.kiteso.KIteso.model.Session;
+import mx.kiteso.KIteso.model.serial.out.Session;
+import mx.kiteso.KIteso.model.serial.out.Status;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;

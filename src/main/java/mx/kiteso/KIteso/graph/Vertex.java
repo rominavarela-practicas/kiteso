@@ -1,8 +1,8 @@
-package mx.kiteso.KIteso.model.adapter;
+package mx.kiteso.KIteso.graph;
 
 import java.util.List;
 
-import mx.kiteso.KIteso.model.Node;
+import mx.kiteso.KIteso.model.serial.in.Node;
 
 public class Vertex {
 	Node node;

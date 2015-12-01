@@ -11,12 +11,8 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import mx.kiteso.KIteso.algorithm.Dijkstra;
-import mx.kiteso.KIteso.algorithm.impl.DijkstraA;
-import mx.kiteso.KIteso.model.Link;
-import mx.kiteso.KIteso.model.Node;
-import mx.kiteso.KIteso.model.adapter.Edge;
-import mx.kiteso.KIteso.model.adapter.Vertex;
+import mx.kiteso.KIteso.model.serial.in.Link;
+import mx.kiteso.KIteso.model.serial.in.Node;
 
 public class Graph {
 	List<Vertex> vertices;
@@ -85,11 +81,6 @@ public class Graph {
 				(target.getCoords()[1]*target.getCoords()[1]));
 		
 		return Math.sqrt(a*a + b*b);
-	}
-	
-	public List<Node> getShortestPath(Vertex source, Vertex target){
-		Dijkstra d= DijkstraA.getInstance(source, this.getVertices(), this.getEdges());
-		return d.getShortestPath(target, this.getVertices());
 	}
 	
 	//getters and setters

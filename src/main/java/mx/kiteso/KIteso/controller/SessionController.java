@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.cryptonode.jncryptor.AES256JNCryptor;
 
-import mx.kiteso.KIteso.model.Session;
-
 import com.google.gson.Gson;
+
+import mx.kiteso.KIteso.model.serial.out.Session;
 
 @SuppressWarnings("unused")
 public class SessionController{

@@ -1,4 +1,4 @@
-package mx.kiteso.KIteso.model;
+package mx.kiteso.KIteso.model.serial.in;
 
 public class Node {
 	int id;
