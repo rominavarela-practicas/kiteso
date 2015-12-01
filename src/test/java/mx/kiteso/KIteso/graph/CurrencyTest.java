@@ -10,7 +10,6 @@ import org.junit.Test;
 import mx.kiteso.KIteso.algorithm.Dijkstra;
 import mx.kiteso.KIteso.algorithm.impl.DijkstraImpl;
 import mx.kiteso.KIteso.graph.Graph;
-import mx.kiteso.KIteso.model.serial.in.Node;
 
 public class CurrencyTest {
 	
@@ -52,7 +51,7 @@ public class CurrencyTest {
 	@Test
 	public void shortestRoute() throws Exception {
 		Dijkstra d= DijkstraImpl.getInstance(0);
-		List<Node> path= d.getShortestRoute(10);
+		List<Integer> route= d.getShortestRoute(10);
 				
 		//
 		ArrayList<ShortestRouteRunnable> runnables= new ArrayList<ShortestRouteRunnable>();
@@ -74,19 +73,19 @@ public class CurrencyTest {
 		//assert same path
 		for(ShortestRouteRunnable r: runnables)
 		{
-			Assert.assertEquals(path.size(), r.path.size());
-			for(int i=0; i<path.size(); i++)
-				Assert.assertEquals(path.get(i), r.path.get(i));
+			Assert.assertEquals(route.size(), r.route.size());
+			for(int i=0; i<route.size(); i++)
+				Assert.assertEquals(route.get(i), r.route.get(i));
 		}
 	}
 	class ShortestRouteRunnable implements Runnable{
-		public List<Node> path;
+		public List<Integer> route;
 		
 		public void run() {
 	        try
 	        {
 	        	Dijkstra d= DijkstraImpl.getInstance(0);
-	    		this.path= d.getShortestRoute(10);
+	    		this.route= d.getShortestRoute(10);
 			} 
 	        catch (Exception e) {
 				e.printStackTrace();

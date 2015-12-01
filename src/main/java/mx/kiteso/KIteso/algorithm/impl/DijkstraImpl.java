@@ -8,7 +8,6 @@ import mx.kiteso.KIteso.algorithm.Dijkstra;
 import mx.kiteso.KIteso.graph.Edge;
 import mx.kiteso.KIteso.graph.Graph;
 import mx.kiteso.KIteso.graph.Vertex;
-import mx.kiteso.KIteso.model.serial.in.Node;
 
 public class DijkstraImpl implements Dijkstra{
 	
@@ -67,15 +66,8 @@ public class DijkstraImpl implements Dijkstra{
 	}
 	
 	@Override
-	public List<Node> getShortestRoute(int targetIndex) throws Exception {
-		Graph graph= Graph.getInstance();
-		List<Vertex> vertices= graph.getVertices();
-		
-		List<Node> path= new ArrayList<Node>();
-		for(int i: routeMap.get(targetIndex))
-			path.add(vertices.get(i).getNode());
-		
-		return path;
+	public List<Integer> getShortestRoute(int targetIndex) {		
+		return routeMap.get(targetIndex);
 	}
 	
 	//sync methods
@@ -89,7 +81,7 @@ public class DijkstraImpl implements Dijkstra{
 			neiList= new ArrayList<Edge>();
 			for(Edge e: edges)
 			{
-				if(e.getSource().getId()==v.getNode().getId())
+				if(e.getSource().getIndex()==v.getNode().getIndex())
 					neiList.add(e);
 			}
 			

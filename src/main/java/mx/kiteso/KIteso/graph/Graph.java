@@ -35,13 +35,8 @@ public class Graph {
 		List<Node> nodos = gson.fromJson(bufferedReader, tipoListaNodos);
 		
 		List<Vertex> vertices= new ArrayList<Vertex>();
-		int i=0;
 		for(Node n: nodos)
-		{
-			n.setIndex(i);
 			vertices.add(new Vertex(n));
-			i++;
-		}
 		
 		return vertices;
 	}
@@ -57,11 +52,11 @@ public class Graph {
 		
 		for(Link l: links)
 		{
-			int idSource = l.getLink()[0];
-			int idTarget = l.getLink()[1];
+			int sourceIndex = l.getLink()[0];
+			int targetIndex = l.getLink()[1];
 			
-			Node source= this.getVertices().get(idSource-1).getNode();
-			Node target= this.getVertices().get(idTarget-1).getNode();
+			Node source= this.getVertices().get(sourceIndex).getNode();
+			Node target= this.getVertices().get(targetIndex).getNode();
 			
 			double weight = calculateWeight(source,target);
 			

@@ -2,7 +2,6 @@ package mx.kiteso.KIteso.services;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -16,16 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
-
 import mx.kiteso.KIteso.algorithm.Dijkstra;
 import mx.kiteso.KIteso.algorithm.impl.DijkstraImpl;
 import mx.kiteso.KIteso.graph.Edge;
 import mx.kiteso.KIteso.graph.Graph;
 import mx.kiteso.KIteso.model.adapter.PathAdapter;
-import mx.kiteso.KIteso.model.serial.in.Node;
 import mx.kiteso.KIteso.model.serial.out.Map;
 import mx.kiteso.KIteso.model.serial.out.Path;
+import mx.kiteso.KIteso.model.serial.out.Route;
 import mx.kiteso.KIteso.model.serial.out.Status;
 
 @Controller
@@ -65,25 +62,21 @@ public class MapServices {
 	
 	@RequestMapping(value="/shortest/route/{sourceId}/{targetId}", method=RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public Status shortestRoute(@PathVariable int sourceId,@PathVariable int targetId,
+	public Route shortestRoute(@PathVariable int sourceId,@PathVariable int targetId,
 			@CookieValue(value = "session", defaultValue = "{}") String sessionCookie,
 			HttpServletRequest req, HttpServletResponse res)
 	{
-		Status status = new Status();
+		Route route = new Route();
 		
 		try {
-			Dijkstra d= DijkstraImpl.getInstance(sourceId-1);
-			List<Node> path= d.getShortestRoute(targetId-1);
-			
-			Gson gson = new Gson();
-			String json = gson.toJson(path);
-			status.setMsg(json);
-		    status.setStatus(Status.STATUS_OK);
+			Dijkstra d= DijkstraImpl.getInstance(sourceId);
+			route.setRoute(d.getShortestRoute(targetId));
+			route.setStatus(Status.STATUS_OK);
 			
 		} catch(Exception ex) {
-			status.setMsg(ex.getMessage());
+			route.setMsg(ex.getMessage());
 		}
 		
-		return status;
+		return route;
 	}
 }
