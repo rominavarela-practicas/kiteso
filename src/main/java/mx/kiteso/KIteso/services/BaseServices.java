@@ -1,8 +1,10 @@
 package mx.kiteso.KIteso.services;
 
-import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,11 +22,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("KItesoServices/demo")
 public class BaseServices {
-	private static final Logger log = Logger.getLogger(BaseServices.class);
+	public static Logger log = Logger.getLogger(BaseServices.class);
+	
+	public Connection connection;
 	
 	@PostConstruct
-	public void init() throws FileNotFoundException {
+	public void init() throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+		connection = DriverManager.getConnection("jdbc:mysql://localhost/Diseno_Software", "root", "toor");
+		
 		log.info("init Demo Controller");
+	}
+	
+	@PreDestroy
+	public void destroy() throws Exception {
+		if(connection != null){
+			connection.close();
+		}
+		
+		log.info("Database connection closed");
 	}
 	
 	@RequestMapping(value="/hello", method=RequestMethod.POST, produces = "application/json")
