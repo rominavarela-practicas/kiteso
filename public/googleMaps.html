@@ -49,8 +49,8 @@ function initialize()
 
     var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-    var arregloNodo = new Array();
-
+    var arregloNodo = [];
+    var arregloTarget = [];
      //web service
     var graph= baseServices.getGraph(function(data)
             {
@@ -59,15 +59,13 @@ function initialize()
 
                 for(var i=0; i<data.markers.length; i++)
                 {
-                var tempNode =new google.maps.LatLng( data.markers[i].coords[0],data.markers[i].coords[1]);
+                var tempNode =new google.maps.LatLng( data.paths[i].source[0],data.paths[i].source[1]);
+                var tempTarget =new google.maps.LatLng( data.paths[i].target[0],data.paths[i].target[1]);
                 arregloNodo.push(tempNode);
+                arregloTarget.push(tempTarget);
 
-                console.log(arregloNode.get(i))
-                /*
-                data.markers[i].coords[0]//latitud
-                data.markers[i].coords[1]//long
-                */
                 }
+
 
 
              }, function(e){
@@ -90,46 +88,16 @@ function initialize()
     //var myTrip = [myCenter,nodo3,nodo4];
     //var myTrip2 = graph;
 
+
     var flightPath = new google.maps.Polyline({
-    path:arregloNodo,
-    strokeColor:"#0000FF",
-    strokeOpacity:0.8,
-    strokeWeight:2
+                    path:arregloNodo,
+                    strokeColor:"#0000FF",
+                    strokeOpacity:0.8,
+                    strokeWeight:2
 
+         });
 
-    /*
-    var arregloNos = new Array();
-
-    function getLat(num){
-        var lati = new Array();
-
-        for(var int=0;i>num;i++){
-        }
-    }
-    function getLong(){
-    }
-    */
-
-  /*
-  function addNodos(lat,long,numNodos,origen,destino){
-
-       getNodos(num);
-
-       for(var i =0; i>num;i++){
-       var tempNode =new google.maps.LatLng(lat, long);
-       arregloNodos.push(tempNode);
-
-       }
-       return arregloNodos;
-   }
-   */
-
-   $("#search").click(function(){
-
-
-   });
-
-
+$("#search").click(function(){})
 flightPath.setMap(map);
 }
 
@@ -150,7 +118,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                             <span class="icon-bar"></span>
                         </button>
 
-                        <a class="navbar-brand" href="#"><p><font color="blue">KITESO</font></p></a>
+                        <a class="navbar-brand" href="index.html"><p><font color="blue">KITESO</font></p></a>
                         <div class="input-group input-group-sm" style = "padding: 10px 10px 10px;">
                             <span class="input-group-addon" id="sizing-addon1">Search</span>
                             <input type="text" class="form-control" aria-describedby="sizing-addon1" id="search">
@@ -160,10 +128,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
                 <div class="col-lg-7">
                     <div class="navbar-collapse collapse" >
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="http://localhost:63342/ProyectoDS/schedule.html" id ="Sch">Schedule</a></li>
-                            <li><a href="http://localhost:63342/ProyectoDS/googleMaps.html" id ="Maps">Map</a></li>
-                            <li><a href="http://localhost:63342/ProyectoDS/teacher.html" id ="Teach">Teacher</a></li>
-                            <li><a href="http://localhost:63342/ProyectoDS/index.html" id="Back">Back</a></li>
+                            <li><a href="schedule.html" id ="Sch">Schedule</a></li>
+                            <li><a href="googleMaps.html" id ="Maps">Map</a></li>
+                            <li><a href="teacher.html" id ="Teach">Teacher</a></li>
+                            <li><a href="index.html" id="Back">Back</a></li>
 
                         </ul>
                     </div><!--/.nav-collapse -->
