@@ -8,10 +8,10 @@
     <title>KITESO</title>
     <link rel='stylesheet' type='text/css' href='lib/bootstrap-3.3.5-dist/css/bootstrap.min.css'/>
   </head>
-    <body>
-        <!-- Fixed navbar -->
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-          <div class="container">
+    <body style="background:#A4CEE9">
+        <!-- top navbar -->
+        <div class="navbar navbar-default navbar-static-top" role="navigation">
+          <div class="container" style="width:100%">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -19,22 +19,72 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#"><p><font color="blue">KITESO</font></p></a>
+              <a class="navbar-brand" href="/"><font color="blue">KITESO</font></a>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Home</a></li>       
-                <li><a href="#about">About</a></li>            
-                <li><a id="loginButton" href="#">Login</a></li>
-                <li><a id="logoutButton" href="#">Logout</a></li>
+                <li class="active"><a href="https://github.com/rominavarela/kiteso" target="_blank"><span class="glyphicon glyphicon-console" aria-hidden="true"></span> Todo sobre el proyecto</a></li>
+                <li><a id="loginButton" href="#">Login / Regístrate</a></li>
+                <li>
+                	<a id="userButton" style="background: #6E9499; color: white;">
+                		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                		<span id="userName">Romina</span>
+                		<span> | </span>
+                		<span id="logoutButton" style="cursor:pointer; color: white;">Logout</span>
+                	</a>
+                </li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>
         </div>
+        
+        <div class="container-fluid">
+		  <div class="row" style="height:100%;">
+		    
+		    <div class="col-md-8" style="background-image: url('/img/movimiento.jpeg'); background-repeat: no-repeat; height:350px;">
+		    	<div class="panel-body">
+		    		<div style="background: #39398F; color: white; font-weight: bold; font-size: 2.5em; padding: 10px;">
+		    			#MOVERSE
+		    		</div>
+		    		<div style="background: #A1A1E4; color: white; font-weight: bold; font-size: 1.5em; padding: 10px;">
+		    			Para transformar
+		    		</div>
+		    	</div>
+		    </div>
+  			
+  			<div class="col-md-4">
+  				<div class="panel-body">
+  					KITESO es un proyecto desarrollado para Web en la clase de 
+					Diseño de Software con el fin de dar un mejor servicio a los estudiantes del ITESO, 
+					proporcionandoles la facilidad de organizar su horario y conocer sus maestros, 
+					así también, esta aplicación web brinda el servicio de poder transladarte 
+					a tus salones de clase por el mejor y mas corto camino, para los estudiantes 
+					de nuevo ingreso y así se pueda dar uso de todas las diferentes areas e instalaciones
+					que el ITESO como Universidad nos brinda.
+					<br/><br/><br/>
+  				</div>
+  			</div>
+  			
+		  </div>
+		</div>
 
-      <h1>HELLO WORLD</h1>
-       <button type="button" id="helloButton">Click Me!</button>
-
+      	<!-- <h1>HELLO WORLD</h1>
+       <button type="button" id="helloButton">Click Me!</button> -->
+	  
+	    <!-- navbar bottom -->
+	    <nav class="navbar navbar-default navbar-fixed-bottom" style="border:none; background:none">
+		  <div class="container" style="text-align: right; width: 100%; padding: 0px;">
+		    <div class="btn-group btn-group-lg" style="" role="group" aria-label="...">
+		    	<button type="button" id="backButton" class="btn btn-default" style="background-color: #8EA7AB; color: white; border-radius: 0px; cursor:unset">
+		    		<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+		    	</button>
+				<button type="button" id="nextButton" class="btn btn-default" style="background-color: rgb(49, 49, 155); color: white; border-radius: 0px;">
+					<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+				</button>
+		    </div>
+		  </div>
+		</nav>
+        
       <div id="scripts">
         <script type='text/javascript' src='lib/jquery-2.1.4.min.js'></script>
         <script type='text/javascript' src='lib/bootstrap-3.3.5-dist/js/bootstrap.min.js'></script>

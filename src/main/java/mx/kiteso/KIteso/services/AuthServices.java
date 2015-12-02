@@ -21,6 +21,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,7 +42,8 @@ public class AuthServices {
 	@RequestMapping(value="/login", method=RequestMethod.POST, produces = "application/json")
 	@ResponseBody
 	public Status authService( @RequestParam String assertion,
-						HttpServletRequest req, HttpServletResponse res)
+			@CookieValue(value = "session", defaultValue = "") String sessionCookie,
+			HttpServletRequest req, HttpServletResponse res)
 	{
 		Status status = new Status();
 		status.setStatus(-1);
@@ -76,7 +78,8 @@ public class AuthServices {
 			status.setEmail(personaAuth.email);
 			
 			//TODO user exists?
-			status.setRedir("/register.html");
+			if(sessionCookie.isEmpty())
+				status.setRedir("/register.html");
 		}
 		catch(Exception ex)
 		{

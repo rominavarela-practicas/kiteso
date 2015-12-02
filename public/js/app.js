@@ -11,7 +11,7 @@ $.ajaxSetup({
 //session control
 var baseServices = new BaseServices(servicesUrl);
 var authServices = new AuthServices(servicesUrl);
-var session = {};
+window.session = {};
 
 $("#loginButton").click(function(){
   navigator.id.request();
@@ -22,15 +22,17 @@ $("#logoutButton").click(function(){
 });
 
 var displaySession = function() {
-    if(session.email)
-    {
+    if(window.session.email)
+    {    	
+    	$("#userName").text(window.session.email)
+    	
         $("#loginButton").hide();
-        $("#logoutButton").show();
+        $("#userButton").show();
     }
     else
-    {
+    {    	
         $("#loginButton").show();
-        $("#logoutButton").hide();
+        $("#userButton").hide();
     }
 }
 
@@ -44,7 +46,7 @@ navigator.id.watch({
             console.log(data);
             
             //on change
-            if(session.email != data.email)
+            if(window.session.email != data.email)
         	{
             	session = data;
                 displaySession();
@@ -67,9 +69,9 @@ navigator.id.watch({
             console.log(data);
             
             //on change
-            if(session.email != data.email)
+            if(window.session.email != data.email)
         	{
-                session = {}
+            	window.session = {}
             	displaySession();
                 if(data.redir && data.redir!==window.location.pathname)
                 	window.location.assign(data.redir);

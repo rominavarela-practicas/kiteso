@@ -1,78 +1,80 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<!--<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />-->
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>KITESO</title>
-		<link rel='stylesheet' type='text/css' href='lib/bootstrap-3.3.5-dist/css/bootstrap.min.css'/>
-		</head>
-	<body>
-        <!-- Fixed navbar -->
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#"><p><font color="blue">KITESO</font></p></a>
+  <head>
+    <meta charset="UTF-8">
+    <!--<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KITESO</title>
+    <link rel='stylesheet' type='text/css' href='lib/bootstrap-3.3.5-dist/css/bootstrap.min.css'/>
+  </head>
+    <body style="background:#A4CEE9">
+        <!-- top navbar -->
+        <div class="navbar navbar-default navbar-static-top" role="navigation">
+          <div class="container" style="width:100%">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><font color="blue">KITESO</font></a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="https://github.com/rominavarela/kiteso" target="_blank"><span class="glyphicon glyphicon-console" aria-hidden="true"></span> Todo sobre el proyecto</a></li>
+                <li><a id="loginButton" href="#">Login / Regístrate</a></li>
+                <li>
+                	<a id="userButton" style="background: #6E9499; color: white;">
+                		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                		<span id="userName">Romina</span>
+                		<span> | </span>
+                		<span id="logoutButton" style="cursor:pointer; color: white;">Logout</span>
+                	</a>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
         </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Home</a></li>       
-            <li><a href="#about">About</a></li>  
-            <li><a id="loginButton" href="#">Login</a></li>
-            <li><a id="logoutButton" href="#">Logout</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-
-
-    <div class="container">
-      <a href="#" class="thumbnail">
-        <img src="img/MapaITESO_MenuPrincipal.jpg">
-      </a>
-    </div> 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <div class="modal fade" id="register" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <form class="form-horizontal" role="form">
-            <div class="modal-header">
-              <h4>New Acount<h4>
-            </div>
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="contact-email" class="col-sm-2 control-label">Name</label>
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" id="contact-email" placeholder="...">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="contact-email" class="col-sm-2 control-label">Last Name</label>
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" id="contact-email" placeholder="...">
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <a class="btn btn-primary" data-dismiss="modal">Submit</a>
-              <a class="btn btn-primary" data-dismiss="modal">Cancel</a>
-            </div>
-          </form>
+        
+        <div class="container-fluid">
+	        <div class="panel panel-primary">
+			  <div class="panel-heading">
+			    	<h3 class="panel-title">Completa tu registro</h3>
+			  </div>
+			  <div class="panel-body">
+				    <div class="form-group">
+		                <label for="contact-email" class="col-sm-2 control-label">Nombre</label>
+		                <div class="col-sm-10">
+		                  <input type="email" class="form-control" id="contact-email" placeholder="...">
+		                </div>
+		              </div>
+		              <div class="form-group">
+		                <label for="contact-email" class="col-sm-2 control-label">Last Name</label>
+		                <div class="col-sm-10">
+		                  <input type="email" class="form-control" id="contact-email" placeholder="...">
+		                </div>
+		              </div>
+			  </div>
+			</div>
         </div>
-      </div>
-    </div>
 
-	<div id="scripts">
+	<!-- navbar bottom -->
+	    <nav class="navbar navbar-default navbar-fixed-bottom" style="border:none; background:none">
+		  <div class="container" style="text-align: right; width: 100%; padding: 0px;">
+		    <div class="btn-group btn-group-lg" style="" role="group" aria-label="...">
+		    	<button type="button" id="backButton" class="btn btn-default" style="background-color: rgb(49, 49, 155); color: white; border-radius: 0px;">
+		    		<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+		    	</button>
+				<button type="button" id="nextButton" class="btn btn-default" style="background-color: #8EA7AB; color: white; border-radius: 0px;">
+					<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+				</button>
+		    </div>
+		  </div>
+		</nav>
+        
+      <div id="scripts">
         <script type='text/javascript' src='lib/jquery-2.1.4.min.js'></script>
         <script type='text/javascript' src='lib/bootstrap-3.3.5-dist/js/bootstrap.min.js'></script>
         <script type='text/javascript' src='lib/persona.js'></script>

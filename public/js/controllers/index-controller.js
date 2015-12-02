@@ -1,4 +1,4 @@
-baseServices = new BaseServices(servicesUrl);
+/*baseServices = new BaseServices(servicesUrl);
 helloButton = $("#helloButton");
 
 helloButton.click(function(){
@@ -9,4 +9,11 @@ helloButton.click(function(){
                 console.log("error");
                 console.log(e);
             });
+});*/
+
+$("#nextButton").click(function(){
+	if(!window.session)
+		navigator.id.request();
+	else if(!window.session.name)
+		window.location.assign("register.html");
 });
