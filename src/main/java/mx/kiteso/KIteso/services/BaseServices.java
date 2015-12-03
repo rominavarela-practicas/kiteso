@@ -40,7 +40,7 @@ public class BaseServices {
 			connection.close();
 		}
 		
-		log.info("Database connection closed");
+		log.info("Base services connection closed");
 	}
 	
 	@RequestMapping(value="/hello", method=RequestMethod.POST, produces = "application/json")

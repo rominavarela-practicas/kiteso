@@ -50,7 +50,7 @@ public class MapServices {
 			connection.close();
 		}
 		
-		log.info("Database connection closed");
+		log.info("Map services connection closed");
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.GET, produces = "application/json")
