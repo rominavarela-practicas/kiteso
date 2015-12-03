@@ -2,11 +2,16 @@ package mx.kiteso.KIteso.services;
 
 import static org.junit.Assert.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+
+import mx.kiteso.KIteso.model.serial.out.Map;
 
 public class MapServicesTest {
 	MapServices services;
@@ -32,6 +37,12 @@ public class MapServicesTest {
 	
 	@Test
 	public void getMapTest(){
-		//assertEquals(services.getMap(sessionCookie, req, res));
+		String sessionCookie = "";
+		HttpServletRequest req = Mockito.mock(HttpServletRequest.class);
+		HttpServletResponse res = Mockito.mock(HttpServletResponse.class);
+		
+		Map map = services.getMap(sessionCookie, req, res);
+		
+		assertTrue(map !=null);
 	}
 }
