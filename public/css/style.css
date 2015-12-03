@@ -1,8 +1,13 @@
-.title{
+#map-container .btn{
+	font-size: 2em;
+	border: none; 
+	width:100px;
+	border-radius: 0px;
+}
+
+#map-container .btn.active{
+	color: #3ACFAF;
+	background: #FFF;
+	box-shadow: unset;
 	font-weight: bold;
 }
-
-.registerlabel{
-	width: 60%; /*o 300px*/
-}
-

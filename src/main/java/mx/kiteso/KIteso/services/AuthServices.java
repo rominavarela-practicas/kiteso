@@ -3,7 +3,11 @@ package mx.kiteso.KIteso.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,11 +36,25 @@ import com.google.gson.Gson;
 @Controller
 @RequestMapping("KItesoServices")
 public class AuthServices {
-	private static final Logger log = Logger.getLogger(AuthServices.class);
+	public static Logger log = Logger.getLogger(AuthServices.class);
+	
+	public Connection connection;
 	
 	@PostConstruct
-	public void init() {
+	public void init() throws Exception{
+		Class.forName("com.mysql.jdbc.Driver");
+		connection = DriverManager.getConnection("jdbc:mysql://localhost/Diseno_Software", "root", "toor");
+		
 		log.info("Auth Controller Initialized");
+	}
+	
+	@PreDestroy
+	public void destroy() throws Exception {
+		if(connection != null){
+			connection.close();
+		}
+		
+		log.info("Authentication services connection closed");
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST, produces = "application/json")
