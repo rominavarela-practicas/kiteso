@@ -1,11 +1,11 @@
 package mx.kiteso.KIteso.services;
 
-import org.apache.log4j.Logger;
+import static org.junit.Assert.*;
 
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import org.mockito.Mockito;
 
 public class MapServicesTest {
@@ -28,5 +28,10 @@ public class MapServicesTest {
 	@Test
 	public void connectionTest() throws Exception{
 		System.out.println("Map services loaded successfully");
+	}
+	
+	@Test
+	public void getMapTest(){
+		//assertEquals(services.getMap(sessionCookie, req, res));
 	}
 }
