@@ -2,6 +2,8 @@ package mx.kiteso.KIteso.services;
 
 import static org.junit.Assert.*;
 
+import java.sql.Connection;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,19 +22,11 @@ public class MapServicesTest {
 	public void setup() throws Exception{
 		Logger log= Mockito.mock(Logger.class);
 		MapServices.log= log;
-		
+
 		services= new MapServices();
-		services.init();
-	}
-	
-	@After
-	public void destroy() throws Exception{
-		services.destroy();
-	}
-	
-	@Test
-	public void connectionTest() throws Exception{
-		System.out.println("Map services loaded successfully");
+		Connection connection= Mockito.mock(Connection.class);
+		services.connection= connection;
+		
 	}
 	
 	@Test
@@ -45,4 +39,18 @@ public class MapServicesTest {
 		
 		assertTrue(map !=null);
 	}
+	
+	@Test
+	public void shortestRouteTest() {
+		int sourceIndex = 0;
+		int targetIndex = 1;
+		String sessionCookie ="";
+		HttpServletRequest req = Mockito.mock(HttpServletRequest.class);
+		HttpServletResponse res = Mockito.mock(HttpServletResponse.class);
+		Map map = services.shortestRoute(sourceIndex, targetIndex, sessionCookie, req, res);
+		
+		assertTrue(map !=null);
+	}
+	
+	
 }
