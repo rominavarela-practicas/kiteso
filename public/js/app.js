@@ -9,8 +9,9 @@ $.ajaxSetup({
 });
 
 //session control
-var baseServices = new BaseServices(servicesUrl);
-var authServices = new AuthServices(servicesUrl);
+window.baseServices = new BaseServices(servicesUrl);
+window.authServices = new AuthServices(servicesUrl);
+window.mapServices = new MapServices(servicesUrl);
 window.session = {};
 
 $("#loginButton").click(function(){
@@ -41,7 +42,7 @@ displaySession();
 navigator.id.watch({
     onlogin: function(assertion)
     {
-    	authServices.login(assertion, function(data){
+    	window.authServices.login(assertion, function(data){
             console.log("auth success");
             console.log(data);
             
@@ -64,7 +65,7 @@ navigator.id.watch({
 
     onlogout: function()
     {
-    	authServices.logout( function(data){
+    	window.authServices.logout( function(data){
             console.log("logout success");
             console.log(data);
             

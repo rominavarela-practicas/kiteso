@@ -1,49 +1,14 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<!--<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />-->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KITESO</title>
-<link rel='stylesheet' type='text/css'
-	href='lib/bootstrap-3.3.5-dist/css/bootstrap.min.css' />
-</head>
-<script>
-
-$(document).on("ready",function(){
-	
-	//$('input:radio[name=mascu]').attr('checked',false);
-	//$('input:radio[name=femm]').attr('checked',false);
-	
-	$('input:radio[name=sex]:nth(0)').attr('checked',false);
-	
-	$('input:radio[name=sex]:nth(1)').attr('checked',false);
-	
-	    $("#fem").click(function() {
-	    	$('input:radio[name=sex]:nth(0)').attr('checked',true);
-	    	if($('input:radio[name=sex]:nth(0)').val()==true)
-	    		{
-	    		$('input:radio[name=sex]:nth(1)').attr('checked',false);
-	    		
-	    		}
-	    
-	    });
-
-	    $('#masc').click(function() {
-	    	$('input:radio[name=sex]:nth(1)').attr('checked',true);
-	    	if($('input:radio[name=sex]:nth(1)').val()==true)
-	    		{
-	    		$('input:radio[name=sex]:nth(0)').attr('checked',false);
-	    		
-	    		}
-	    });
-
-	
-})
-
-</script>
-<body style="background: #A4CEE9">
+<html ng-app='KItesoApp'>
+  <head>
+    <meta charset="UTF-8">
+    <!--<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KITESO</title>
+    <link rel='stylesheet' type='text/css' href='lib/bootstrap-3.3.5-dist/css/bootstrap.min.css'/>
+  </head>
+    <body style="background:#A4CEE9" ng-controller='Controller as ctrl'>
 	<!-- top navbar -->
 	<div class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container" style="width: 100%">
@@ -145,9 +110,9 @@ $(document).on("ready",function(){
 
 	<div id="scripts">
 		<script type='text/javascript' src='lib/jquery-2.1.4.min.js'></script>
-		<script type='text/javascript'
-			src='lib/bootstrap-3.3.5-dist/js/bootstrap.min.js'></script>
+		<script type='text/javascript' src='lib/bootstrap-3.3.5-dist/js/bootstrap.min.js'></script>
 		<script type='text/javascript' src='lib/persona.js'></script>
+        <script type='text/javascript' src='lib/angular.min.js'></script>
 
 		<!--services-->
 		<script type='text/javascript' src='js/services/base-services.js'></script>

@@ -11,9 +11,11 @@ helloButton.click(function(){
             });
 });*/
 
-$("#nextButton").click(function(){
-	if(!window.session)
-		navigator.id.request();
-	else if(!window.session.name)
-		window.location.assign("register.html");
+angular.module('KItesoApp',[]).controller('Controller',function(){
+	$("#nextButton").click(function(){
+		if(!window.session)
+			navigator.id.request();
+		else if(!window.session.alumno)
+			window.location.assign("register.html");
+	});
 });

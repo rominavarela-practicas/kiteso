@@ -39,55 +39,41 @@
           </div>
         </div>
         
-        <div class="container-fluid" style="background:white">
-		  <div class="row">
-    		<div class="col-md-1">
-    		</div>
-    		<div class="col-md-10">
-              <div class="container">
-                <h2 class="title">Teacher</h2>
-                <p>Schedule of your teacher</p>            
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>E-Mail</th>
-                      <th>Cubicle</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td id="name1"></td>
-                      <td id="email1"></td>
-                      <td id="cub1"></td>
-                    </tr>
-                    <tr>
-                      <td id="name2"></td>
-                      <td id="email2"></td>
-                      <td id="cub2"></td>
-                    </tr>
-                    <tr>
-                      <td id="name3"></td>
-                      <td id="email3"></td>
-                      <td id="cub3"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-    		</div>
-    		<div class="col-md-1">
-    		</div>
-    	</div>
+        <div class="container-fluid" id="map-container">
+		  <div class="row" style="height:100%;">
+		    
+		    <div class="col-md-8">
+		    	<div class="panel-body">
+		    		<div class="container" id="googleMap" style="width:800px;height:500px;"><!-- MAP --></div>
+		    	</div>
+		    </div>
+  			
+  			<div class="col-md-4">
+  				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Selecciona tu ruta</h3>
+					</div>
+					<div class="panel-body" style="padding:0px">
+  						<button type="button" class="btn btn-default"
+  						ng-class="{ active: location.selected==true}"
+  						ng-repeat="location in ctrl.locations" ng-click="ctrl.selectLocation(location)">
+  							{{location.name}}
+  						</button>
+  					</div>
+ 				</div>
+  			</div>
+  			
+		  </div>
 		</div>
 	  
 	    <!-- navbar bottom -->
 	    <nav class="navbar navbar-default navbar-fixed-bottom" style="border:none; background:none">
 		  <div class="container" style="text-align: right; width: 100%; padding: 0px;">
 		    <div class="btn-group btn-group-lg" style="" role="group" aria-label="...">
-		    	<button type="button" id="backButton" class="btn btn-default" style="background-color: rgb(49, 49, 155); color: white; border-radius: 0px; cursor:unset">
+		    	<button type="button" id="backButton" class="btn btn-default" style="background-color: #8EA7AB; color: white; border-radius: 0px; cursor:unset">
 		    		<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
 		    	</button>
-				<button type="button" id="nextButton" class="btn btn-default" style="background-color: #8EA7AB; color: white; border-radius: 0px;">
+				<button type="button" id="nextButton" class="btn btn-default" style="background-color: rgb(49, 49, 155); color: white; border-radius: 0px;">
 					<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 				</button>
 		    </div>
@@ -108,7 +94,7 @@
 
         <!--controllers-->
         <script type='text/javascript' src='js/app.js'></script>
-        <script type='text/javascript' src='js/controllers/teacher-controller.js'></script>
+        <script type='text/javascript' src='js/controllers/map-controller.js'></script>
 
       </div>
     </body>
