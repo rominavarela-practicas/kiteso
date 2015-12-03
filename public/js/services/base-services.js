@@ -13,9 +13,11 @@ function BaseServices(servicesUrl) {
  **/
 BaseServices.prototype.getHello = function (success_callback, error_callback)
 {
-  /*$.get( this.servicesUrl+"hello" ,
+  /*
+   $.get( this.servicesUrl+"hello" ,
               success_callback , "json" )
-              .error(error_callback);*/
+              .error(error_callback);
+  */
   $.post( this.servicesUrl+"demo/hello" , {} ,
               success_callback , "json" )
               .fail(error_callback);
@@ -28,13 +30,14 @@ BaseServices.prototype.getHello = function (success_callback, error_callback)
  **/
 BaseServices.prototype.getGraph = function (success_callback, error_callback)
 {
-  /*$.get( this.servicesUrl+"map" ,
+  $.get( this.servicesUrl+"map" ,
               success_callback , "json" )
               .error(error_callback);
-  */
+
   /*$.post( this.servicesUrl+"demo/hello" , {} ,
               success_callback , "json" )
               .fail(error_callback);*/
+  /*
   var graph={
        markers:[
         {name:"A",coords:[20.608140,-103.414618]},
@@ -176,6 +179,6 @@ BaseServices.prototype.getGraph = function (success_callback, error_callback)
                {"source":[20.60785,-103.415895],"target":[20.607669,-103.415814]},
                {"source":[20.607669,-103.415814],"target":[20.60785,-103.415895]}]
 
-  };
+  };*/
   success_callback(graph);
 }

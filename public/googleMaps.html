@@ -30,10 +30,6 @@ baseServices = new BaseServices(servicesUrl);
 
 var myCenter=new google.maps.LatLng(20.608140,-103.414618);
 
-var nodo2 =new google.maps.LatLng(20.607659, -103.414561);
-var nodo3 =new google.maps.LatLng(20.607825, -103.414793);
-var nodo4 =new google.maps.LatLng(20.607693, -103.414825);
-
 var marker;
 var markerDestiny;
 
@@ -42,67 +38,83 @@ function initialize()
 {
    var mapProp = {
     center:myCenter,
-    zoom:750,
+    zoom:18,
     mapTypeId:google.maps.MapTypeId.HYBRID
     };
 
 
     var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    
+    var marker=new google.maps.Marker({
+        position:myCenter,
+        animation:google.maps.Animation.BOUNCE
+        });
 
-    var arregloNodo = [];
-    var arregloTarget = [];
+      marker.setMap(map);
+
+    var arregloNodos = [];
+
      //web service
-    var graph= baseServices.getGraph(function(data)
-            {
+    var graph= baseServices.getGraph(function(data){
                 console.log("success");
                 console.log(data);
 
-                for(var i=0; i<data.markers.length; i++)
+                for(var i=0; i<data.paths.length; i++)
                 {
-                var tempNode =new google.maps.LatLng( data.paths[i].source[0],data.paths[i].source[1]);
-                var tempTarget =new google.maps.LatLng( data.paths[i].target[0],data.paths[i].target[1]);
-                arregloNodo.push(tempNode);
-                arregloTarget.push(tempTarget);
-
+                	var tempSource =new google.maps.LatLng( 
+                			data.paths[i].source[0],
+                			data.paths[i].source[1]);
+                	
+                	arregloNodos.push(tempSource);
+                
                 }
-
-
-
-             }, function(e){
-                console.log("error");
-                console.log(e);
+                
+                var tempTarget =new google.maps.LatLng( 
+                		data.paths[data.paths.length-1].target[0],
+                		data.paths[data.paths.length-1].target[1]);
+                arregloNodos.push(tempTarget);
+                
+                var flightPath = new google.maps.Polyline({
+                    path:arregloNodos,
+                    strokeColor:"#0000FF",
+                    strokeOpacity:0.8,
+                    strokeWeight:2
+                });
+                
+                flightPath.setMap(map);
+                
             });
 
-
-
-
-
-    var marker=new google.maps.Marker({
-      position:myCenter,
-      animation:google.maps.Animation.BOUNCE
-      });
-
-    marker.setMap(map);
-
-
-    //var myTrip = [myCenter,nodo3,nodo4];
-    //var myTrip2 = graph;
-
-
+	
+/*
     var flightPath = new google.maps.Polyline({
-                    path:arregloNodo,
+                    path:arregloSource,
                     strokeColor:"#0000FF",
                     strokeOpacity:0.8,
                     strokeWeight:2
 
          });
+    
+    var flightPath2 = new google.maps.Polyline({
+        path:arregloTarget,
+        strokeColor:"#0000FF",
+        strokeOpacity:0.8,
+        strokeWeight:2
+   		});
+ */
 
 $("#search").click(function(){})
-flightPath.setMap(map);
+
+
+
+//flightPath2.setMap(map);
+
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
+
 <body>
 
 <div class="contenedor-fluid">
